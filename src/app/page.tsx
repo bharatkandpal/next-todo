@@ -1,7 +1,8 @@
 import Link from 'next/link'
+import { prisma } from '../db'
 
 export default async function Home() {
-  const todos = [{ title: 'todo 1' }, { title: 'todo 2' }]
+  const todos = await prisma.todo.findMany()
   console.log(todos)
   return (
     <>

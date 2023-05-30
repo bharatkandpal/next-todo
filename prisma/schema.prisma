@@ -1,0 +1,20 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// Note: sqlite doesn't support enums, would have used a enum for status instead of completed boolean
+model Todo {
+  id        String   @id @default(uuid())
+  title     String
+  completed Boolean
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt()
+}
