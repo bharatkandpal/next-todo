@@ -3,7 +3,6 @@ import { prisma } from '../db'
 
 export default async function Home() {
   const todos = await prisma.todo.findMany()
-  console.log(todos)
   return (
     <>
       <header className="flex justify-between items-center mb-4">
@@ -16,7 +15,7 @@ export default async function Home() {
         </Link>
       </header>
       <ul className="pl-4">
-        {todos.map((todo) => (
+        {todos.map((todo:any) => (
           <li>{todo.title}</li>
         ))}
       </ul>
